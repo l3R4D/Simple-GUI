@@ -1,0 +1,8 @@
+#OS garbage
+*.DS_Store
+
+#Editor garbage
+*.idea/
+
+#Other
+*__pycache__/
