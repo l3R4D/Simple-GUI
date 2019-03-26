@@ -11,12 +11,6 @@ root.geometry('500x500')
 
 def main():
     # Desired layout and methods
-    tool_bar(root)
-    status_bar(root)
-    buttons(root)
-    button_event_one(root)
-    labels_one(root)
-    mouse_button_fun(root)
 
     # Display layout and execute methods
     root.mainloop()
