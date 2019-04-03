@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox
 
-from Quiz.utils import WindowSettings
+from utils import WindowSettings
 
 
 # Events for buttons and other triggers

@@ -1,17 +1,13 @@
-import tkinter as tk
-
-from Quiz.screens import QuestionScreen, StartScreen
+from screens import Quiz
 
 
 # Initialize
-root = tk.Tk()
+root = Quiz()
 root.geometry('500x500')
+root.resizable(False, False)
 
 
 def main():
-    # Desired layout and methods
-
-    # Display layout and execute methods
     root.mainloop()
 
 
