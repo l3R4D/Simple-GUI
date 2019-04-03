@@ -1,4 +1,32 @@
 import tkinter as tk
+import random
+
+from utils import Fonts
+
+
+def questions(container, question, answer1, answer2, answer3, answer4, right_command, wrong_command):
+    question_label = tk.Label(container, text=question, fg='black', font=Fonts.HEADER.value)
+    answer_button1 = tk.Button(container, text=answer1, fg='black', width=10, pady=10,
+                               command=right_command)
+    answer_button2 = tk.Button(container, text=answer2, fg='black', width=10, pady=10,
+                               command=wrong_command)
+    answer_button3 = tk.Button(container, text=answer3, fg='black', width=10, pady=10,
+                               command=wrong_command)
+    answer_button4 = tk.Button(container, text=answer4, fg='black', width=10, pady=10,
+                               command=wrong_command)
+
+    buttons = [answer_button1, answer_button2, answer_button3, answer_button4]
+    packed_buttons = []
+    selector = random.randint(0, len(buttons) - 1)
+
+    question_label.pack()
+
+    for button in buttons:
+        while selector in packed_buttons:
+            selector = random.randint(0, len(buttons) - 1)
+        buttons[selector].pack()
+        packed_buttons.append(selector)
+        selector = random.randint(0, len(buttons) - 1)
 
 
 class Quiz(tk.Tk):
@@ -10,7 +38,7 @@ class Quiz(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartScreen, QuestionScreen, OptionScreen, EndScreen):
+        for F in (StartScreen, QuestionScreen1, OptionScreen, EndScreen):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky='nsew')
@@ -22,28 +50,25 @@ class Quiz(tk.Tk):
         frame.tkraise()
 
 
-class QuestionScreen(tk.Frame):
+class QuestionScreen1(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        title_label = tk.Label(self, text="Question Screen", fg='black', font=('', 60))
-        start_button = tk.Button(self, text="Back", fg='black', width=10,
-                                 command=lambda: controller.show_frame(StartScreen))
-        answer_button = tk.Button(self, text="Answer", fg='black', width=10,
-                                  command=lambda: controller.show_frame(EndScreen))
+        questions(self, "What is a bee?", "Animal", "Plant", "Chemical", "Insect",
+                  lambda: controller.show_frame(StartScreen), lambda: controller.show_frame(EndScreen))
 
-        title_label.pack()
-        start_button.pack()
-        answer_button.pack()
+        back_button = tk.Button(self, text="Back", fg='black', width=10,
+                                command=lambda: controller.show_frame(StartScreen))
+        back_button.pack(side=tk.BOTTOM)
 
 
 class StartScreen(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        title_label = tk.Label(self, text="Start Screen", fg='black', font=('', 60))
+        title_label = tk.Label(self, text="Start Screen", fg='black', font=Fonts.HEADER.value)
         start_button = tk.Button(self, text="Start!", fg='black', width=10,
-                                 command=lambda: controller.show_frame(QuestionScreen))
+                                 command=lambda: controller.show_frame(QuestionScreen1))
         options_button = tk.Button(self, text="Options", fg='black', width=10,
                                    command=lambda: controller.show_frame(OptionScreen))
 
@@ -56,7 +81,7 @@ class OptionScreen(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        title_label = tk.Label(self, text="Options Screen", fg='black', font=('', 60))
+        title_label = tk.Label(self, text="Options Screen", fg='black', font=Fonts.HEADER.value)
         home_button = tk.Button(self, text="Back", fg='black', width=10,
                                 command=lambda: controller.show_frame(StartScreen))
 
@@ -68,9 +93,9 @@ class EndScreen(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        title_label = tk.Label(self, text="End Screen", fg='black', font=('', 60))
+        title_label = tk.Label(self, text="End Screen", fg='black', font=Fonts.HEADER.value)
         retry_button = tk.Button(self, text="Retry?", fg='black', width=10,
-                                 command=lambda: controller.show_frame(QuestionScreen))
+                                 command=lambda: controller.show_frame(QuestionScreen1))
 
         title_label.pack()
         retry_button.pack()
