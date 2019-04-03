@@ -1,7 +1,6 @@
 import tkinter as tk
 
-from Examples import buttons, labels_one, writable_boxes, button_event_one, mouse_button_fun, BasicButtons, tool_bar, \
-    status_bar, pop_up
+from Quiz.screens import QuestionScreen, StartScreen
 
 
 # Initialize

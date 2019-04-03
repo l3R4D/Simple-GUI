@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox
 
-from Utils import WindowSettings
+from Quiz.utils import WindowSettings
 
 
 # Events for buttons and other triggers
@@ -119,26 +119,6 @@ def mouse_button_fun(root):  # 'root' = tkinter.Tk()
     frame.pack()
 
 
-class BasicButtons:
-    """
-    Basic class demonstrating the use of classes within tkinter usage.
-    """
-    def __init__(self, root):  # 'root' = tkinter.Tk()
-        # Make a frame and some buttons
-        frame = tk.Frame(root)
-        self.print_button = tk.Button(frame, text="Print", command=self.print_message)
-        self.quit_button = tk.Button(frame, text="Quit", command=quit)
-
-        # Pack the frame and buttons on 'root'
-        frame.pack()
-        self.print_button.pack(side=tk.LEFT)
-        self.quit_button.pack(side=tk.LEFT)
-
-    # The most simple method to demonstrate tkinter use
-    def print_message(self):
-        print("Woo!")
-
-
 def tool_bar(root):  # 'root' = tkinter.Tk()
     """
     Basic toolbar.
@@ -176,3 +156,23 @@ def pop_up():  # 'root' = tkinter.Tk()
         print("They can skeet their yeet")
     elif pop_up_one == "no":
         print("They cannot skeet their yeet")
+
+
+class BasicButtons:
+    """
+    Basic class demonstrating the use of classes within tkinter usage.
+    """
+    def __init__(self, root):  # 'root' = tkinter.Tk()
+        # Make a frame and some buttons
+        frame = tk.Frame(root)
+        self.print_button = tk.Button(frame, text="Print", command=self.print_message)
+        self.quit_button = tk.Button(frame, text="Quit", command=quit)
+
+        # Pack the frame and buttons on 'root'
+        frame.pack()
+        self.print_button.pack(side=tk.LEFT)
+        self.quit_button.pack(side=tk.LEFT)
+
+    # The most simple method to demonstrate tkinter use
+    def print_message(self):
+        print("Woo!")
