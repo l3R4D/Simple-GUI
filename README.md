@@ -1,3 +1,3 @@
-#GUI Project
+# GUI Project
 
-A GUI project for AP Computer Science 
+A GUI project for an AP Computer Science course
