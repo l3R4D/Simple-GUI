@@ -47,7 +47,7 @@ def questions(container, question, answer1, answer2, answer3, answer4, right_com
 
     # For every button inside of the buttons array, we are going to display a random answer button on the screen
     # and store the random number in the packed_buttons array. We will then select another random number but we will
-    # the check to see if that number has already been used. If so, we will roll for another one until we don't get
+    # then check to see if that number has already been used. If so, we will roll for another one until we don't get
     # any numbers from the packed_buttons array.
     for button in buttons:
         while selector in packed_buttons:
@@ -73,7 +73,7 @@ class Quiz(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         # Here we make an empty dictionary to store all of our frames in.
-        # Frames are essentially screens that are formatted differently.
+        # Frames are essentially screens that are formatted differently from one another.
         self.frames = {}
         # For every frame we add here, it will be added to the empty dictionary.
         for F in (StartScreen, QuestionScreen1, OptionScreen, EndScreen):
@@ -84,7 +84,7 @@ class Quiz(tk.Tk):
         # We start the application with this screen.
         self.show_frame(StartScreen)
 
-    # This method will show whatever screen we specific it to show. This is useful for buttons and sliders.
+    # This method will show whatever screen we specify it to show.
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
@@ -101,7 +101,7 @@ class QuestionScreen1(tk.Frame):
 
         # Here we call our questions() method. Order here is also super important. Use this as a guide when calling
         # this method.
-        questions(self, "What is a bee?", "Animal", "Plant", "Chemical", "Insect",
+        questions(self, "What is a bee?", "Insect", "Plant", "Chemical", "Animal",
                   lambda: controller.show_frame(StartScreen), lambda: controller.show_frame(EndScreen))
 
         # This back button takes us back to the start screen while removing all of the user's progress.
